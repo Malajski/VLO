@@ -1,0 +1,29 @@
+<FORM method="POST" action= "index.php?id=dodaj">
+
+ Przedmiot: <input name="przedmiot" type="text"> <br> 
+ Cena: <input name="cena" type= "text"> <br>
+ <button type="submit">Dodaj</button>
+ <button type="reset">Wyczysc</button>
+
+</FORM>
+<?php
+
+$przedmiot = isset($_POST['przedmiot'])?$_POST['przedmiot']:"";
+$cena = isset($_POST['cena'])?$_POST['cena']:"";
+
+$przedmiot = strip_tags($przedmiot);
+$cena = strip_tags($cena);
+
+$sql = "INSERT INTO przedmioty (id, przedmiot, cena)
+VALUES ('', '$przedmiot', '$cena')";
+echo $sql;
+if ($conn->query($sql) === TRUE) 
+{
+    echo "Rekord dodany";
+} 
+    else 
+        {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+?>

@@ -1,0 +1,20 @@
+<form method = "POST" action="index.php?id=usun">
+id : <input name="fid" type="text">
+<button type="submit">Wyslij</button>
+<?php
+$fid = isset($_POST['fid'])?$_POST['fid']:"";
+if($fid!="")
+{
+
+$sql = "DELETE FROM przedmioty WHERE id='$fid'";
+
+if ($conn->query($sql) === TRUE) 
+    {
+        echo "Record deleted successfully";
+    } else 
+        {
+            echo "Error deleting record: " . $conn->error;
+        }
+
+}
+?>

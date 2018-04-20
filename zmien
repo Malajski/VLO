@@ -1,0 +1,30 @@
+<FORM method="POST" action= "index.php?id=dodaj">
+
+ ID: <input name="id" type="text"> <br> 
+ Przedmiot: <input name="przedmiot" type="text"> <br> 
+ Cena: <input name="cena" type= "text"> <br>
+ <button type="submit">Zmien</button>
+
+</FORM>
+<?php
+$fid = isset($_POST['fid'])?$_POST['fid']:"";
+if($fid!="")
+$prze = isset($_POST['prze'])?$_POST['prze']:"";
+if($prze!="")
+$price = isset($_POST['price'])?$_POST['price']:"";
+if($price!="")
+{
+
+$sql = "UPDATE przedmioty SET przedmiot='$prze' WHERE id=$fid";
+$sql = "UPDATE przedmioty SET cena='$price' WHERE id=$fid";
+
+if ($conn->query($sql) === TRUE) 
+    {
+        echo "Record zmieniony";
+    } 
+    else 
+        {
+            echo "Error updating record: " . $conn->error;
+        }
+}
+?>
